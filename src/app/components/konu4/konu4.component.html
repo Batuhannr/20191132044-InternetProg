@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h4>Konular</h4>
+      <button class="btn btn-danger" (click)="OturumuKapat()">Oturumu Kapat</button>
+      <table class="table"></table>
+      <thead>
+        <th>Konu Adı</th>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <th>Bitiş Tarihi </th>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      </thead>
+      <tbody>
+        <tr *ngFor="let konu4 of konular4">
+          <td>{{konu4.konuAdi4}}</td>
+          &nbsp;
+          <td>{{konu4.bitisTari4}}</td>
+          <td><button class="btn btn-outline-dark ml-3 mt-1" >Detay</button></td>
+          <td><button class="btn btn-outline-warning ml-3 mt-1" (click)="konu4Duzenle(konu4)">Düzenle</button></td>
+          <td><button class="btn btn-outline-danger ml-3 mt-1" (click)="konu4Sil(konu4)" >Sil</button></td>
+          <button class="btn btn-outline-primary ml-3 mt-1">Öğrenci Listesi</button>
+        </tr>
+      </tbody>
+      <hr>
+      
+    </div>
+    <div class="col-md-4">
+      <h4>Konu Ekle - Düzenle</h4>
+      <form #frm="ngForm" (submit)="konu4Kaydet()">
+        <div class="form-group">
+          <label>Konu Adı</label> 
+          <input type="text" class="form-control" name="konuAdi" [(ngModel)]="secKonu4.konuAdi4">
+          <input type="hidden" class="form-control" name="key" [(ngModel)]="secKonu4.key">
+        </div>
+        <div class="form-group">
+          <label>Bitiş Tarihi</label> 
+          <input type="text" class="form-control" name="bitisTar" [(ngModel)]="secKonu4.bitisTari4" required>
+        </div>
+        <div class="form-group">
+          <label>Açıklama</label> 
+          <textarea type="text" class="form-control" name="detay" [(ngModel)]="secKonu4.detayi4" required> </textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Kaydet" class="btn btn-outline-success" [disabled]="frm.invalid">
+          
+        </div>
+      </form>
+      <div [ngClass]="Konu4Sonuc.islem ? 'alert alert-success' : 'alert alert-danger'" *ngIf="Konu4Sonuc.mesaj?.length>0">{{Konu4Sonuc.mesaj}}</div>
+      <hr>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h4>Konular</h4>
+      <button class="btn btn-danger" (click)="OturumuKapat()">Oturumu Kapat</button>
+      <table class="table"></table>
+      <thead>
+        <th>Konu Adı</th>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <th>Bitiş Tarihi </th>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      </thead>
+      <tbody>
+        <tr *ngFor="let konu6 of konular6">
+          <td>{{konu6.konuAdi6}}</td>
+          &nbsp;
+          <td>{{konu6.bitisTari6}}</td>
+
+          <td><button class="btn btn-outline-warning ml-3 mt-1" (click)="konu6Duzenle(konu6)">Düzenle</button></td>
+          <td><button class="btn btn-outline-danger ml-3 mt-1" (click)="konu6Sil(konu6)" >Sil</button></td>
+        </tr>
+      </tbody>
+      <hr>
+      
+    </div>
+    <div class="col-md-4">
+      <h4>Konu Ekle - Düzenle</h4>
+      <form #frm="ngForm" (submit)="konu6Kaydet()">
+        <div class="form-group">
+          <label>Konu Adı</label> 
+          <input type="text" class="form-control" name="konuAdi" [(ngModel)]="secKonu6.konuAdi6">
+          <input type="hidden" class="form-control" name="key" [(ngModel)]="secKonu6.key">
+        </div>
+        <div class="form-group">
+          <label>Bitiş Tarihi</label> 
+          <input type="text" class="form-control" name="bitisTar" [(ngModel)]="secKonu6.bitisTari6" required>
+        </div>
+        <div class="form-group">
+          <label>Açıklama</label> 
+          <textarea type="text" class="form-control" name="detay" [(ngModel)]="secKonu6.detayi6" required> </textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Kaydet" class="btn btn-outline-success" [disabled]="frm.invalid">
+          
+        </div>
+      </form>
+      <div [ngClass]="Konu6Sonuc.islem ? 'alert alert-success' : 'alert alert-danger'" *ngIf="Konu6Sonuc.mesaj?.length>0">{{Konu6Sonuc.mesaj}}</div>
+      <hr>
+    </div>
+  </div>
+</div>

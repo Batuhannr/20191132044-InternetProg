@@ -1,0 +1,133 @@
+<div class="container mt-5">
+  <div class="row" *ngIf="detay">
+    <div class="col-md-12">
+      <h4>Detaylar</h4>
+      <table class="table">
+        <thead>
+          <th>Konu Adı</th>
+          <th>Bitiş Tarihi</th>
+          <th>Detay</th>
+        </thead>
+        <tbody>
+          <td>Konu Bulamadım</td>
+          <td>18.11.2021</td>
+          <td>Konu Bulamadım</td>
+        </tbody>
+        <button class="btn btn-success ">Konuyu seç</button>
+        <button class="btn btn-danger  ml-2   "(click)="detay=false;" >Kapat</button>
+      </table>
+    </div>
+  </div>
+  <div class="row" *ngIf="detay1">
+    <div class="col-md-12">
+      <h4>Detaylar</h4>
+      <table class="table">
+        <thead>
+          <th>Konu Adı</th>
+          <th>Bitiş Tarihi</th>
+          <th>Detay</th>
+        </thead>
+        <tbody>
+          <td>Konu Bulamadım</td>
+          <td>18.11.2021</td>
+          <td>Konu Bulamadım</td>
+        </tbody>
+        <button class="btn btn-success ">Konuyu seç</button>
+        <button class="btn btn-danger  ml-2   "(click)="detay=false;" >Kapat</button>
+      </table>
+    </div>
+  </div>
+  <div class="row" *ngIf="detay2">
+    <div class="col-md-12">
+      <h4>Detaylar</h4>
+      <table class="table">
+        <thead>
+          <th>Konu Adı</th>
+          <th>Bitiş Tarihi</th>
+          <th>Detay</th>
+        </thead>
+        <tbody>
+          <td>Konu Bulamadım</td>
+          <td>18.11.2021</td>
+          <td>Konu Bulamadım</td>
+        </tbody>
+        <button class="btn btn-success ">Konuyu seç</button>
+        <button class="btn btn-danger  ml-2   "(click)="detay=false;" >Kapat</button>
+      </table>
+    </div>
+  </div>
+  <div class="row" *ngIf="detay3">
+    <div class="col-md-12">
+      <h4>Detaylar</h4>
+      <table class="table">
+        <thead>
+          <th>Konu Adı</th>
+          <th>Bitiş Tarihi</th>
+          <th>Detay</th>
+        </thead>
+        <tbody>
+          <td>Konu Bulamadım</td>
+          <td>18.11.2021</td>
+          <td>Konu Bulamadım</td>
+        </tbody>
+        <button class="btn btn-success ">Konuyu seç</button>
+        <button class="btn btn-danger  ml-2   "(click)="detay=false;" >Kapat</button>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Konular</h4>
+      <button class="btn btn-danger" (click)="OturumuKapat()">Oturumu Kapat</button>
+      <table class="table"></table>
+      <thead>
+        <th>Konu Adı</th>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <th>Bitiş Tarihi </th>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      </thead>
+      <tbody>
+        <tr *ngFor="let konu2 of konular2">
+          <td>{{konu2.konuAdi2}}</td>
+          &nbsp;
+          <td>{{konu2.bitisTari2}}</td>
+          <td><button class="btn btn-outline-warning ml-3 mt-1" (click)="konu2Duzenle(konu2)">Düzenle</button></td>
+          <td><button class="btn btn-outline-danger ml-3 mt-1" (click)="konu2Sil(konu2)" >Sil</button></td>
+        </tr>
+      </tbody>
+      <hr>
+      
+    </div>
+    <div class="col-md-1">
+      <br><br><br> <br> <br>
+      <button class="btn btn-outline-dark ml-1 mt-4" (click)="detay=true;">Detay</button>
+      <button class="btn btn-outline-dark ml-1 mt-2" (click)="detay1=true;">Detay</button>
+      <button class="btn btn-outline-dark ml-1 mt-3" (click)="detay2=true;">Detay</button>
+      <button class="btn btn-outline-dark ml-1 mt-2" (click)="detay3=true;">Detay</button>
+    </div>
+    <div class="col-md-4">
+      <h4>Konu Ekle - Düzenle</h4>
+      <form #frm="ngForm" (submit)="konu2Kaydet()">
+        <div class="form-group">
+          <label>Konu Adı</label> 
+          <input type="text" class="form-control" name="konuAdi" [(ngModel)]="secKonu2.konuAdi2">
+          <input type="hidden" class="form-control" name="key" [(ngModel)]="secKonu2.key">
+        </div>
+        <div class="form-group">
+          <label>Bitiş Tarihi</label> 
+          <input type="text" class="form-control" name="bitisTar" [(ngModel)]="secKonu2.bitisTari2" required>
+        </div>
+        <div class="form-group">
+          <label>Açıklama</label> 
+          <textarea type="text" class="form-control" name="detay" [(ngModel)]="secKonu2.detayi2" required> </textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Kaydet" class="btn btn-outline-success" [disabled]="frm.invalid">
+          
+        </div>
+      </form>
+      <div [ngClass]="Konu2Sonuc.islem ? 'alert alert-success' : 'alert alert-danger'" *ngIf="Konu2Sonuc.mesaj?.length>0">{{Konu2Sonuc.mesaj}}</div>
+      <hr>
+    </div>
+  </div>
+</div>
